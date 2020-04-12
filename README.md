@@ -1,4 +1,4 @@
-## Own test —— learn with bilibili
+## Own practice —— learn with bilibili
 
 ## 资料：
 https://spring.io/guides
