@@ -15,4 +15,11 @@ spring boot（包含spring MVC，mybatis）
 数据库使用h2  
 利用flyway构建表  
 前端使用bootstrap构建  
-登录逻辑通过调用github作第三方验证  
+登录逻辑通过调用github作第三方验证 
+
+
+
+## IDEA快捷键记录
+cmd + opt + v ==> 抽取变量
+shift + F6    ==> 变量全部重命名
+ 
