@@ -11,7 +11,7 @@
 
 
 ## 使用技术点
-spring boot（包含spring MVC，mybatis） 
+spring boot（包含spring MVC，mybatis）  
 数据库使用h2  
 利用flyway构建表  
 前端使用bootstrap构建  
