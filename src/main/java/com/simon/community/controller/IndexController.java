@@ -1,13 +1,19 @@
 package com.simon.community.controller;
 
+import com.simon.community.dto.QuestionDTO;
+import com.simon.community.mapper.QuestionMapper;
 import com.simon.community.mapper.UserMapper;
+import com.simon.community.model.Question;
 import com.simon.community.model.User;
+import com.simon.community.service.QuestionService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 
 import javax.servlet.http.Cookie;
 import javax.servlet.http.HttpServletRequest;
+import java.util.List;
 
 @Controller
 public class IndexController {
@@ -15,8 +21,17 @@ public class IndexController {
     @Autowired
     private UserMapper userMapper;
 
+    @Autowired
+    private QuestionService questionService;
+
     @GetMapping("/")
-    public String index(HttpServletRequest request) {
+    public String index(HttpServletRequest request,
+                        Model model) {
+
+        // 查询所有index页面上的数据
+        List<QuestionDTO> questionDTOSList = questionService.list();
+        model.addAttribute("questionDTOs", questionDTOSList);
+
         // 获取cookie
         Cookie[] cookies = request.getCookies();
         if (cookies == null || cookies.length == 0) {
