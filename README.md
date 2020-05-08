@@ -23,7 +23,3 @@ spring boot（包含spring MVC，mybatis）
 
 
 
-## IDEA快捷键记录
-cmd + opt + v ==> 抽取变量
-shift + F6    ==> 变量全部重命名
- 
