@@ -31,14 +31,21 @@ public class QuestionService {
         PageDTO pageDTO = new PageDTO();
         // 查询分页的总数
         Integer pageCount = questionMapper.count();
-        pageDTO.setPagination(pageCount, page, size);
+        Integer totalPage;
+        // 计算总页数
+        if (pageCount % size == 0) {
+            totalPage = pageCount / size;
+        } else {
+            totalPage = pageCount / size + 1;
+        }
         // 参数验证：
         if (page < 1) {
             page = 1;
         }
-        if (page > pageDTO.getTotalPage()) {
-            page = pageDTO.getTotalPage();
+        if (page > totalPage) {
+            page = totalPage;
         }
+        pageDTO.setPagination(totalPage, page);
         Integer offset = size*(page-1);
         // 获取当前页（page）该展示论坛内容数据
         List<Question> questionList = questionMapper.list(offset, size);
@@ -61,14 +68,21 @@ public class QuestionService {
         PageDTO pageDTO = new PageDTO();
         // 查询分页的总数
         Integer pageCount = questionMapper.countByUserId(user_id);
-        pageDTO.setPagination(pageCount, page, size);
+        Integer totalPage;
+        // 计算总页数
+        if (pageCount % size == 0) {
+            totalPage = pageCount / size;
+        } else {
+            totalPage = pageCount / size + 1;
+        }
         // 参数验证：
         if (page < 1) {
             page = 1;
         }
-        if (page > pageDTO.getTotalPage()) {
-            page = pageDTO.getTotalPage();
+        if (page > totalPage) {
+            page = totalPage;
         }
+        pageDTO.setPagination(totalPage, page);
         Integer offset = size*(page-1);
         // 获取当前页（page）该展示论坛内容数据
         List<Question> questionList = questionMapper.listByUserId(user_id, offset, size);

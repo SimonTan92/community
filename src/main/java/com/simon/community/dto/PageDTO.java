@@ -18,21 +18,10 @@ public class PageDTO {
 
     /**
      * 设置分页相关参数
-     * @param pageCount 总数量
      * @param page 当前页
-     * @param size 页面承载数据量
      */
-    public void setPagination(Integer pageCount, Integer page, Integer size) {
-        // 计算总页数
-        if (pageCount % size == 0) {
-            totalPage = pageCount / size;
-        } else {
-            totalPage = pageCount / size + 1;
-        }
-        // 参数验证：
-        if (page < 1) {
-            page = 1;
-        }
+    public void setPagination(Integer totalPage, Integer page) {
+        this.totalPage = totalPage;
         if (page > totalPage) {
             page = totalPage;
         }
