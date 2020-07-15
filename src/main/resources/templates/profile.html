@@ -1,7 +1,7 @@
 <!DOCTYPE HTML>
 <html xmlns:th="http://www.thymeleaf.org">
 <head>
-    <title th:text="sectionName"></title>
+    <title th:text="${sectionName}"></title>
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
     <!--  引入bootstrap的css样式  -->
     <link rel="stylesheet" href="/css/bootstrap.min.css"/>
@@ -36,20 +36,20 @@
             <nav aria-label="Page navigation">
                 <ul class="pagination">
                     <li th:if="${pageDTO_profile.showFirstPage}">
-                        <a href="/?page=1" aria-label="firstPage">
+                        <a th:href="@{'/profile/'+${section}(page=${1})}" aria-label="firstPage">
                             <span aria-hidden="true">&lt;&lt;</span>
                         </a>
                     </li>
                     <li th:if="${pageDTO_profile.showPrevious}">
-                        <a th:href="@{/(page=${pageDTO_profile.currentPage - 1})}" aria-label="Previous">
+                        <a th:href="@{'/profile/'+${section}(page=${pageDTO_profile.currentPage - 1})}" aria-label="Previous">
                             <span aria-hidden="true">&lt;</span>
                         </a>
                     </li>
                     <li th:each="page : ${pageDTO_profile.getPages()}" th:class="${pageDTO_profile.currentPage == page}? 'active': ''">
-                        <a th:href="@{/(page=${page})}" th:text="${page}"></a>
+                        <a th:href="@{'/profile/'+${section}(page=${page})}" th:text="${page}"></a>
                     </li>
                     <li th:if="${pageDTO_profile.showNext}">
-                        <a th:href="@{/(page=${pageDTO_profile.currentPage + 1})}" aria-label="Next">
+                        <a th:href="@{'/profile/'+${section}(page=${pageDTO_profile.currentPage+1})}" aria-label="Next">
                             <span aria-hidden="true">&gt;</span>
                         </a>
                     </li>

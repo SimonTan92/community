@@ -61,7 +61,6 @@ public class ProfileController {
 
         // 能通过用于去查询相应的论坛发布的帖子～
         PageDTO pageDTO = questionService.list(user.getId(), page, size);
-        System.out.println(pageDTO);
         model.addAttribute("pageDTO_profile", pageDTO);
         return "profile";
     }
